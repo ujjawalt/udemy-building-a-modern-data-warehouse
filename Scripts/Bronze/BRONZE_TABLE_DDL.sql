@@ -1,0 +1,87 @@
+/************************************************************
+
+======================================
+CREATE TABLES FOR BRONZE LAYER
+=====================================
+Script Purpose: 
+	This script creates tables for the Bronze layer of the data warehouse. 
+
+Warning: 
+	Running the below scripts will drop and re-create the tables in the EDW database and BRONZE schema. 
+	It is advised to take proper backups prior to running the below queries. 
+	
+*************************************************************/
+
+
+USE ROLE DWH_ENG; 
+USE EDW; 
+USE SCHEMA BRONZE;
+
+CREATE OR REPLACE TABLE CRM_CUST_INFO
+(
+	CST_ID				NUMBER(5)
+	,CST_KEY			VARCHAR(50)
+	,CST_FIRSTNAME		VARCHAR(50)
+	,CST_LASTNAME		VARCHAR(50)
+	,CST_MARITAL_STATUS VARCHAR(1)
+	,CST_GNDR			VARCHAR(1)
+	,CST_CREATE_DATE	DATE
+);
+
+CREATE OR REPLACE TABLE CRM_PROD_INFO 
+(
+	PRD_ID			NUMBER(3)
+	,PRD_KEY		VARCHAR(50)
+	,PRD_NM			VARCHAR(50)
+	,PRD_COST		NUMBER(6)
+	,PRD_LINE		VARCHAR(50)
+	,PRD_START_DT	DATE
+	,PRD_END_DT		DATE 
+);
+
+
+CREATE OR REPLACE TABLE CRM_SALES_DETAIL_INFO
+(
+	SLS_ORD_NUM		VARCHAR(50)
+	,SLS_PRD_KEY	VARCHAR(50)
+	,SLS_CUST_ID	NUMBER(5)
+	,SLS_ORDER_DT	NUMBER(8) 
+	,SLS_SHIP_DT	NUMBER(8)
+	,SLS_DUE_DT		NUMBER(8)
+	,SLS_SALES		NUMBER(6)
+	,SLS_QUANTITY	NUMBER(2)
+	,SLS_PRICE		NUMBER(6)
+);
+
+
+CREATE OR REPLACE TABLE ERP_CUST_AZ12_INFO
+(
+CID		VARCHAR(50),
+BDATE	DATE,
+GEN		VARCHAR(50)
+);
+
+
+CREATE OR REPLACE TABLE ERP_LOC_A101_INFO
+(
+CID		VARCHAR(50),
+CNTRY	VARCHAR(30)
+);
+
+
+CREATE OR REPLACE TABLE ERP_PX_CAT_G1V2_INFO
+(
+ID		VARCHAR(50),
+CAT			VARCHAR(50),
+SUBCAT		VARCHAR(50),
+MAINTENANCE	VARCHAR(50)
+);
+
+
+
+CREATE OR REPLACE TABLE REF_COUNTRY_CD
+(
+	COUNTRY_NAME 	VARCHAR(50),
+	COUNTRY_CD 		VARCHAR(50),
+	NOTES 			VARCHAR(50)
+);
