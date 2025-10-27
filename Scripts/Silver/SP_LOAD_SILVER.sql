@@ -18,7 +18,11 @@ Usage Example:
 ===============================================================================	
 */
 
-CREATE OR REPLACE PROCEDURE EDW.SILVER.SP_LOAD_SILVER()
+USE DWH_ENG;
+USE EDW; 
+USE SCHEMA SILVER;
+
+CREATE OR REPLACE PROCEDURE SP_LOAD_SILVER()
 RETURNS STRING
 LANGUAGE SQL
 AS
